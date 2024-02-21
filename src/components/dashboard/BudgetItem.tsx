@@ -13,17 +13,24 @@ import {
   calculateSpentByBudget,
   formatCurrency,
   formatPercentage,
-} from "../helpers";
+} from "../../helpers";
+import { IBudget } from "../../types/common.types";
 
-const BudgetItem = ({ budget, showDelete = false }) => {
+const BudgetItem = ({
+  budget,
+  showDelete = false,
+}: {
+  budget: IBudget;
+  showDelete?: boolean;
+}) => {
   const { id, name, amount, color, description } = budget;
   const spent = calculateSpentByBudget(id);
-
+  const isMinus = amount - spent < 0;
   return (
     <div
       className="budget"
       style={{
-        "--accent": color,
+        ["--accent" as any]: color,
       }}
     >
       <div className="progress-text">
@@ -37,8 +44,8 @@ const BudgetItem = ({ budget, showDelete = false }) => {
       <div className="progress-text">
         <small>{formatCurrency(spent)} spent</small>
         <small className="flex-sm align-items-center">
-          {formatCurrency(amount - spent)} remaining
-          {amount - spent < 0 ? <MinusCircleIcon width={30} /> : ""}
+          {formatCurrency(amount - spent)} {isMinus ? "minus" : "remaining"}
+          {isMinus ? <MinusCircleIcon color="#f00" width={30} /> : ""}
         </small>
       </div>
       {showDelete ? (

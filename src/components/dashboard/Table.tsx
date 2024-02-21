@@ -1,7 +1,14 @@
 // component import
+import { IExpense } from "../../types/common.types";
 import ExpenseItem from "./ExpenseItem";
 
-const Table = ({ expenses, showBudget = true }) => {
+const Table = ({
+  expenses,
+  showBudget = true,
+}: {
+  expenses: IExpense[];
+  showBudget?: boolean;
+}) => {
   return (
     <div className="table">
       <table>

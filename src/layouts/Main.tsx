@@ -5,19 +5,19 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import wave from "../assets/wave.svg";
 
 // components
-import Nav from "../components/Nav";
+import Nav from "../components/shared/Nav";
 
 //  helper functions
-import { fetchData } from "../helpers"
+import { fetchData } from "../helpers";
 
 // loader
 export function mainLoader() {
   const userName = fetchData("userName");
-  return { userName }
+  return { userName };
 }
 
 const Main = () => {
-  const { userName } = useLoaderData()
+  const { userName } = useLoaderData();
 
   return (
     <div className="layout">
@@ -27,6 +27,6 @@ const Main = () => {
       </main>
       <img src={wave} alt="" />
     </div>
-  )
-}
-export default Main
+  );
+};
+export default Main;

@@ -14,13 +14,13 @@ const AddBudgetForm = () => {
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
 
-  const formRef = useRef();
-  const focusRef = useRef();
+  const formRef = useRef<HTMLFormElement>(null);
+  const focusRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!isSubmitting) {
-      formRef.current.reset();
-      focusRef.current.focus();
+      formRef.current?.reset();
+      focusRef.current?.focus();
     }
   }, [isSubmitting]);
 
@@ -49,15 +49,6 @@ const AddBudgetForm = () => {
             placeholder="e.g., $350"
             required
             inputMode="decimal"
-          />
-        </div>
-        <div className="grid-xs">
-          <label htmlFor="newBudgerDescription">Description (optional)</label>
-          <input
-            name="newBudgerDescription"
-            id="newBudgerDescription"
-            defaultValue={""}
-            placeholder="e.g., It is my incoming business..."
           />
         </div>
         <input type="hidden" name="_action" value="createBudget" />

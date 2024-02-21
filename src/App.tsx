@@ -8,17 +8,15 @@ import "react-toastify/dist/ReactToastify.css";
 import Main, { mainLoader } from "./layouts/Main";
 
 // Actions
+import { budgetAction, deleteBudget } from "./actions/budget.actions";
+import { dashboardAction } from "./actions/dashboard.action";
+import { expensesAction } from "./actions/expense.action";
 import { logoutAction } from "./actions/logout";
-import { deleteBudget } from "./actions/deleteBudget";
 
-// Routes
-import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
+import BudgetPage, { budgetLoader } from "./pages/BudgetPage";
+import Dashboard, { dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
-import BudgetPage, { budgetAction, budgetLoader } from "./pages/BudgetPage";
-import ExpensesPage, {
-  expensesAction,
-  expensesLoader,
-} from "./pages/ExpensesPage";
+import ExpensesPage, { expensesLoader } from "./pages/ExpensesPage";
 
 const router = createBrowserRouter([
   {

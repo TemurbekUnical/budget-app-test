@@ -9,9 +9,16 @@ import {
   formatCurrency,
   formatDateToLocaleString,
   getAllMatchingItems,
-} from "../helpers";
+} from "../../helpers";
+import { IExpense } from "../../types/common.types";
 
-const ExpenseItem = ({ expense, showBudget }) => {
+const ExpenseItem = ({
+  expense,
+  showBudget,
+}: {
+  expense: IExpense;
+  showBudget: boolean;
+}) => {
   const fetcher = useFetcher();
 
   const budget = getAllMatchingItems({
@@ -30,7 +37,7 @@ const ExpenseItem = ({ expense, showBudget }) => {
           <Link
             to={`/budget/${budget.id}`}
             style={{
-              "--accent": budget.color,
+              ["--accent" as any]: budget.color,
             }}
           >
             {budget.name}
